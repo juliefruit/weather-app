@@ -31,6 +31,8 @@ function displayWeather(response) {
   document.querySelector(
     "#user-city"
   ).innerHTML = `Current Conditions in ${response.data.name}`;
+  document.querySelector("#weather-description").innerHTML =
+    response.data.weather[0].description;
   document.querySelector("#current-temp").innerHTML = `${Math.round(
     response.data.main.temp
   )}°C`;
