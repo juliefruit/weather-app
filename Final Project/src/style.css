@@ -1,0 +1,48 @@
+.search-bar {
+  display: inline;
+  font-family: "Montserrat", sans-serif;
+}
+.search-btn {
+  background-color: #2f3c4f;
+  color: #85abc6;
+  font-family: "Montserrat", sans-serif;
+  padding: 5px 10px;
+  margin: 42px 20px 25px;
+  border: solid 2px #85abc6;
+  border-radius: 10px;
+  display: inline;
+}
+.current-location {
+  background-color: #85abc6;
+  color: #2f3c4f;
+  font-family: "Montserrat", sans-serif;
+  padding: 5px 10px;
+  margin: 0 auto;
+  border: solid 2px #2f3c4f;
+  border-radius: 10px;
+  display: inline;
+}
+.main-info {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 200;
+}
+.heading {
+  font-weight: 300;
+  font-size: 24px;
+}
+.card {
+  border: none;
+}
+.current-day {
+  font-weight: 300;
+  font-size: 20px;
+}
+.current-temperature {
+  font-size: 20px;
+}
+.extra-info {
+  list-style-type: none;
+}
+.data-type {
+  font-weight: 300;
+}
