@@ -26,7 +26,6 @@ let userDay = document.querySelector("#user-day-time");
 let now = new Date();
 userDay.innerHTML = displayDate(now);
 
-//adding the icon
 function displayWeather(response) {
   console.log(response);
   document.querySelector(
@@ -37,10 +36,15 @@ function displayWeather(response) {
   document.querySelector("#current-temp").innerHTML = `${Math.round(
     response.data.main.temp
   )}°C`;
-  let icon = document.querySelector("#icon");
-  let iconCode = response.data.weather[0].icon;
-  let iconUrl = `http://openweathermap.org/img/wn/${iconCode}@2x.png`;
-  icon.setAttribute("src", "http://openweathermap.org/img/wn/10d@2x.png") = iconUrl;
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    );
+  document
+    .querySelector("#icon")
+    .setAttribute("alt", response.data.weather[0].description);
   document.querySelector("#wind-speed").innerHTML = `Wind: ${Math.round(
     response.data.wind.speed
   )}km/hr`;
