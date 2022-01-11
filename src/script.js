@@ -27,15 +27,16 @@ let now = new Date();
 userDay.innerHTML = displayDate(now);
 
 function displayWeather(response) {
-  console.log(response);
+  celsiusTemperature = response.data.main.temp;
+
   document.querySelector(
     "#user-city"
   ).innerHTML = `Current Conditions in ${response.data.name}`;
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].description;
-  document.querySelector("#current-temp").innerHTML = `${Math.round(
+  document.querySelector("#current-temp").innerHTML = Math.round(
     response.data.main.temp
-  )}°C`;
+  );
   document
     .querySelector("#icon")
     .setAttribute(
@@ -76,10 +77,35 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchCoordinates);
 }
 
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
+  let temperatureElement = document.querySelector("#current-temp");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+function displayCelsiusTemp(event) {
+  event.preventDefault();
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
+  let temperatureElement = document.querySelector("#current-temp");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
 let citySearch = document.querySelector("#search-form");
 citySearch.addEventListener("submit", inputCity);
 
 let currentLocation = document.querySelector("#current-location-btn");
 currentLocation.addEventListener("click", getCurrentLocation);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemp);
+
+let celsiusTemperature = null;
 
 searchCity("New York");

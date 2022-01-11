@@ -40,6 +40,15 @@
 .current-temperature {
   font-size: 20px;
 }
+.current-temperature a {
+  text-decoration: none;
+}
+
+.active {
+  color: #2f3c4f;
+  cursor: default;
+}
+
 .extra-info {
   list-style-type: none;
 }
