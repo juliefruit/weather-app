@@ -28,7 +28,7 @@ userDay.innerHTML = displayDate(now);
 
 function displayWeather(response) {
   celsiusTemperature = response.data.main.temp;
-
+  displayForecast();
   document.querySelector(
     "#user-city"
   ).innerHTML = `Current Conditions in ${response.data.name}`;
@@ -94,6 +94,38 @@ function displayCelsiusTemp(event) {
   temperatureElement.innerHTML = Math.round(celsiusTemperature);
 }
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+      <div class="forecast col-2">
+        <div id="forecast-day">
+          ${day}
+        </div>
+        <img
+          src="http://openweathermap.org/img/wn/50n@2x.png"
+          alt="fog"
+          width="42"
+          id="forecast-icon"
+        />
+        <br />
+        <span id="forecast-min-temp">
+          10
+        </span>
+        <span id="forecast-max-temp">
+          12
+        </span>
+      </div>
+      `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 let citySearch = document.querySelector("#search-form");
 citySearch.addEventListener("submit", inputCity);
 
@@ -107,5 +139,7 @@ let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", displayCelsiusTemp);
 
 let celsiusTemperature = null;
+
+//let fiveDayForecast = document.querySelector("#forecast");
 
 searchCity("New York");
