@@ -59,3 +59,12 @@
 .line-break {
   width: 50%;
 }
+
+.forecast {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul > li {
+  display: inline-block;
+}

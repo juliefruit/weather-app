@@ -36,12 +36,12 @@
         Current Location
       </button>
       <div class="row main-info">
-        <div class="col-8">
+        <div class="col">
           <h2 class="heading current-conditions" id="user-city">
             Current Conditions
           </h2>
           <div class="row">
-            <div class="col-6">
+            <div class="col">
               <div class="card current-weather">
                 <span class="current-day" id="user-day-time"><br /></span>
                 <div id="weather-description"></div>
@@ -50,22 +50,26 @@
                   ><span class="units"
                     ><a href="#" id="celsius-link" class="active"> °C</a> |
                     <a href="#" id="fahrenheit-link">°F</a></span
-                  ><img src="" alt="" id="icon" />
+                  >
+                  <img src="" alt="" id="icon" class="icon" />
                 </div>
               </div>
             </div>
-            <div class="col-6">
-              <ul class="extra-info">
-                <li>
+            <div class="col extra-info">
                   <span class="data-type" id="wind-speed">Wind: km/hr</span>
-                </li>
-                <li>
+                <br />
                   <span class="data-type" id="humidity">Humidity: %</span>
-                </li>
-              </ul>
             </div>
-          </div>
         </div>
+        <div>
+        <ul class="forecast">
+                <li><span class="day-one">Tuesday</span><br /><span class="icon-one">icon</span> <span class="temp-one">10|13</span></li>
+                <li><span class="day-two">Tuesday</span><br /><span class="icon-two">icon</span> <span class="temp-two">10|13</span></li>
+                <li><span class="day-three">Tuesday</span><br /><span class="icon-three">icon</span> <span class="temp-three">10|13</span></li>
+                <li><span class="day-four">Tuesday</span><br /><span class="icon-four">icon</span> <span class="temp-four">10|13</span></li>
+                <li><span class="day-five">Tuesday</span><br /><span class="icon-five">icon</span> <span class="temp-five">10|13</span></li>
+             </ul>
+             </div>
         <div class="line-break">
           <hr />
         </div>
