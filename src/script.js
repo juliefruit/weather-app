@@ -26,37 +26,49 @@ let userDay = document.querySelector("#user-day-time");
 let now = new Date();
 userDay.innerHTML = displayDate(now);
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[day];
+}
+
 function displayForecast(response) {
-  console.log(response.data);
+  let forecast = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
 
-  let days = ["Thu", "Fri", "Sat", "Sun"];
+  //let days = ["Mon", "Tue", "Wed", "Thu"];
 
   let forecastHTML = `<div class="row">`;
 
-  days.forEach(function (day) {
-    forecastHTML =
+  days.forEach(function (forecastDay, index) {
+    if (index < 5) {
       forecastHTML +
-      `
+        `
       <div class="forecast col-2">
         <div id="forecast-day">
-          ${day}
+          ${formatDay(forecastDay.dt)}
         </div>
         <img
-          src="http://openweathermap.org/img/wn/50n@2x.png"
-          alt="fog"
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+          alt="${forecastDay.weather[0].description}"
           width="42"
           id="forecast-icon"
         />
         <br />
         <span id="forecast-min-temp">
-          10
+          ${Math.round(forecastDay.temp.min)}
         </span>
         <span id="forecast-max-temp">
-          12
+          ${Math.round(forecastDay.temp.max)}
         </span>
       </div>
       `;
+    }
   });
 
   forecastHTML = forecastHTML + `</div>`;
@@ -105,7 +117,7 @@ function searchCity(city) {
 }
 
 function inputCity(event) {
-  //event.preventDefault();
+  event.preventDefault();
   let city = document.querySelector("#search-city").value;
   searchCity(city);
 }
