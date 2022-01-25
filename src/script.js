@@ -39,11 +39,9 @@ function displayForecast(response) {
 
   let forecastElement = document.querySelector("#forecast");
 
-  //let days = ["Mon", "Tue", "Wed", "Thu"];
-
   let forecastHTML = `<div class="row">`;
 
-  days.forEach(function (forecastDay, index) {
+  forecast.forEach(function (forecastDay, index) {
     if (index < 5) {
       forecastHTML +
         `
@@ -133,35 +131,10 @@ function getCurrentLocation(event) {
   navigator.geolocation.getCurrentPosition(searchCoordinates);
 }
 
-function displayFahrenheitTemp(event) {
-  event.preventDefault();
-  celsiusLink.classList.remove("active");
-  fahrenheitLink.classList.add("active");
-  let temperatureElement = document.querySelector("#current-temp");
-  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
-}
-
-function displayCelsiusTemp(event) {
-  event.preventDefault();
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#current-temp");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
-}
-
 let citySearch = document.querySelector("#search-form");
 citySearch.addEventListener("submit", inputCity);
 
 let currentLocation = document.querySelector("#current-location-btn");
 currentLocation.addEventListener("click", getCurrentLocation);
-
-let fahrenheitLink = document.querySelector("#fahrenheit-link");
-fahrenheitLink.addEventListener("click", displayFahrenheitTemp);
-
-let celsiusLink = document.querySelector("#celsius-link");
-celsiusLink.addEventListener("click", displayCelsiusTemp);
-
-let celsiusTemperature = null;
 
 searchCity("New York");
