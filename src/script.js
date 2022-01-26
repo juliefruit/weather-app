@@ -42,8 +42,9 @@ function displayForecast(response) {
   let forecastHTML = `<div class="row">`;
 
   forecast.forEach(function (forecastDay, index) {
-    if (index < 5) {
-      forecastHTML +
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
         `
       <div class="forecast col-2">
         <div id="forecast-day">
@@ -68,7 +69,7 @@ function displayForecast(response) {
       `;
     }
   });
-
+  console.log(response);
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
@@ -115,7 +116,7 @@ function searchCity(city) {
 }
 
 function inputCity(event) {
-  event.preventDefault();
+  //event.preventDefault();
   let city = document.querySelector("#search-city").value;
   searchCity(city);
 }
