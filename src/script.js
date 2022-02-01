@@ -116,7 +116,7 @@ function searchCity(city) {
 }
 
 function inputCity(event) {
-  //event.preventDefault();
+  event.preventDefault();
   let city = document.querySelector("#search-city").value;
   searchCity(city);
 }
@@ -128,7 +128,7 @@ function searchCoordinates(position) {
 }
 
 function getCurrentLocation(event) {
-  //event.preventDefault();
+  event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchCoordinates);
 }
 
